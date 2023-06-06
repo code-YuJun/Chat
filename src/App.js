@@ -1,4 +1,8 @@
-import { tim, TIM } from "./index";
+import { tim, TIM } from "@/utils/tim.js";
+import Editor from '@/components/Editor';
+import Header from '@/components/Header';
+import Message from '@/components/Message';
+
 function App() {
   // 登录
   let promise = tim.login({
@@ -47,6 +51,13 @@ function App() {
   };
   return (
     <div className="App">
+      <div>
+        <Header />
+      </div>
+      <div>
+        <Message />
+        <Editor />
+      </div>
       <button onClick={fun}>点击发送消息</button>
     </div>
   );
