@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: 0,
-  title: "redux toolkit pre"
+  value: 0
 };
 
 // 创建一个 Slice 

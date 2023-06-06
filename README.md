@@ -101,3 +101,118 @@ export { genTestUserSig, EXPIRETIME };
 ## 文档
 react-redux: https://cn.react-redux.js.org
 redux-toolkit: https://cn.redux-toolkit.js.org/
+
+## 项目引入 RTK
+1. 安装依赖
+```bash
+npm i @reduxjs/toolkit react-redux
+```
+2. 创建一个 reducer
+```javascript
+import { createSlice } from '@reduxjs/toolkit';
+// 初始值
+const initialState = {
+  value: 0,
+  title: "redux toolkit pre"
+};
+// 创建一个 Slice 
+export const counterSlice = createSlice({
+  name: 'counter',
+  // 初始值
+  initialState,
+  // 定义 reducers 并生成关联的操作，相当于之前的reducer函数
+  reducers: {
+    increment: (state) => {
+      state.value += 1;
+    },
+    decrement: (state) => {
+      state.value -= 1;
+    },
+  },
+});
+// 默认导出
+export default counterSlice.reducer;
+```
+3. 创建 store 对象
+```javascript
+import { configureStore } from "@reduxjs/toolkit";
+import counterSlice from "./features/counterSlice.js";
+
+// configureStore创建一个redux数据
+const store = configureStore({
+  // 合并多个Slice
+  reducer: {
+    counter: counterSlice
+  },
+});
+
+export default store;
+```
+4. 使用 react-redux 将 redux 和 组件关联
+```javascript
+import { Provider } from 'react-redux';
+import store from '@/store/index.js';
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
+);
+```
+5. 在组件中使用变量
+```javascript
+import { PureComponent } from 'react';
+import { connect } from 'react-redux';
+class Header extends PureComponent {
+    render() {
+        const { value } = this.props
+        return (
+            <span>{value}</span>
+        );
+    }
+}
+const mapStateToProps = (state) => ({
+    value: state.counter.value
+})
+export default connect(mapStateToProps)(Header);
+```
+6. 在组件中修改 redux 中的变量
+在 redux 中将 action 导出
+```javascript
+// 导出加减的方法
+export const { increment, decrement } = counterSlice.actions;
+```
+在组件中 dispatch 调用 action
+```javascript
+import { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { increment } from '@/store/festures/counterSlice.js'
+class Header extends PureComponent {
+    increment() {
+        this.props.increment()
+    }
+    render() {
+        const { value } = this.props
+        return (
+            <div>
+                <span>{value}</span>
+                <button onClick={e => this.increment()}>点击操作</button>
+            </div>
+        );
+    }
+}
+// 遍历 redux 中的变量
+const mapStateToProps = (state) => ({
+    value: state.counter.value
+})
+// 便利 redux 中的方法
+const mapDispatchToProps = (dispatch) => ({
+    increment() {
+        // increment() 返回值是一个 action 对象 {payload: ***, type: "counter/increment"}
+        dispatch(increment())
+    }
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
+```
+

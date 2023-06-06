@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterSlice from "./features/counterSlice.js";
+import counterSlice from "./festures/counterSlice.js";
 
 // configureStore创建一个redux数据
 const store = configureStore({
