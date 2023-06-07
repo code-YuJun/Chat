@@ -1,3 +1,4 @@
+import './App.css'
 import { tim, TIM } from "@/utils/tim.js";
 import Editor from '@/components/Editor';
 import Header from '@/components/Header';
@@ -50,7 +51,7 @@ function App() {
       });
   };
   return (
-    <div className="App">
+    <div id="App">
       <div>
         <Header />
       </div>
