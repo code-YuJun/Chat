@@ -2,10 +2,11 @@ import { PureComponent } from "react";
 import { connect } from "react-redux";
 import classnames from "classnames";
 import { HeaderWrapper } from "./style";
-import { increment } from "@/store/festures/counterSlice.js";
+// import { increment } from "@/store/festures/counterSlice.js";
+import { fetchLoginStateAction } from "@/store/login/login.js";
 class Header extends PureComponent {
-  increment() {
-    this.props.increment();
+  componentDidMount(){
+    this.props.toLogin()
   }
   render() {
     const { value } = this.props;
@@ -17,13 +18,11 @@ class Header extends PureComponent {
         <div className="Info">
           <div className="Name">聊天窗口</div>
           <div className="State">
-            <svg>
+            {/* <svg>
               <use xlink:href=""></use>
-            </svg>
+            </svg> */}
           </div>
         </div>
-        {/* <div className={classnames('class1', 'class2')}>显示{ value }</div>
-                <button onClick={e => this.increment()}>点击操作</button> */}
       </HeaderWrapper>
     );
   }
@@ -31,9 +30,8 @@ class Header extends PureComponent {
 const mapStateToProps = () => {};
 // 便利 redux 中的方法
 const mapDispatchToProps = (dispatch) => ({
-  increment() {
-    // increment() 返回值是一个 action 对象 {payload: ***, type: "counter/increment"}
-    dispatch(increment());
-  },
+  toLogin(){
+    dispatch(fetchLoginStateAction())
+  }
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

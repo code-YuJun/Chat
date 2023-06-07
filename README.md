@@ -218,4 +218,11 @@ const mapDispatchToProps = (dispatch) => ({
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
 ```
+## 使用 RTK 创建异步 action
+redux 中需要的数据，最好是在 redux 中去请求，而不是在页面或组件中请求。
+@reduxjs/toolkit 已经集成了 react-thunk
+1. 在 redux 中创建异步 action
+```javascript
 
+
+```
