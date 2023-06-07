@@ -104,7 +104,7 @@ redux-toolkit: https://cn.redux-toolkit.js.org/
 
 ## 输入框编辑器
 Draft.js 中文文档: https://github.com/mqyqingfeng/draft-js-doc-translation
-官方文档: 
+github官方文档: https://github.com/facebookarchive/draft-js
 ## 项目引入 RTK
 1. 安装依赖
 ```bash
