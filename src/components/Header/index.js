@@ -1,5 +1,7 @@
-import { PureComponent } from 'react';
-import { connect } from 'react-redux';
+import { PureComponent } from 'react'
+import { connect } from 'react-redux'
+import classnames from 'classnames'
+import { HeaderWrapper } from './style'
 import { increment } from '@/store/festures/counterSlice.js'
 class Header extends PureComponent {
     increment() {
@@ -8,17 +10,16 @@ class Header extends PureComponent {
     render() {
         const { value } = this.props
         return (
-            <div>
-                <span>{value}</span>
+            <HeaderWrapper>
+                <div className={classnames('class1', 'class2')}>显示{ value }</div>
                 <button onClick={e => this.increment()}>点击操作</button>
-            </div>
+            </HeaderWrapper>
         );
     }
 }
-// 遍历 redux 中的变量
-const mapStateToProps = (state) => ({
-    value: state.counter.value
-})
+const mapStateToProps = () => {
+    
+}
 // 便利 redux 中的方法
 const mapDispatchToProps = (dispatch) => ({
     increment() {
