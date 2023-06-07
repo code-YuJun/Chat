@@ -25,7 +25,9 @@ npm install tim-profanity-filter-plugin --save
 
 ## sdk 使用事项
 1. 登录之后才可以用 sdk 
-2. 登录的 userSig 可以在这里生成 ![avatar](https://pic.imgdb.cn/item/647af95ef024cca173e1e551.png)，或者可以用函数生成的方式：
+2. 登录的 userSig 可以在这里生成
+![avatar](https://pic.imgdb.cn/item/647af95ef024cca173e1e551.png)
+，或者可以用函数生成的方式：
 ```javascript
 // es
 import LibGenerateTestUserSig from './lib-generate-test-usersig-es.min.js';
