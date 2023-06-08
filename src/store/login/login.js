@@ -3,8 +3,8 @@ import axios from "axios"
 
 export const fetchLoginStateAction = createAsyncThunk("fetch/loginState",async () => {
   // 在页面中 dispatch 之后，会有三种状态
-  const res = axios.get("***")
-  return res.data
+  // const res = axios.get("***")
+  // return res.data
 })
 
 export const loginSlice = createSlice({
@@ -24,8 +24,8 @@ export const loginSlice = createSlice({
 
     },
     [fetchLoginStateAction.fulfilled](state,action){
-      const { state } = action.payload.data
-      state.loginState = state
+      // const { state } = action.payload.data
+      // state.loginState = state
     },
     [fetchLoginStateAction.rejected](state,action){
 

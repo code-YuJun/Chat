@@ -5,7 +5,7 @@ import { HeaderWrapper } from "./style";
 // import { increment } from "@/store/festures/counterSlice.js";
 import { fetchLoginStateAction } from "@/store/login/login.js";
 class Header extends PureComponent {
-  componentDidMount(){
+  componentDidMount() {
     this.props.toLogin()
   }
   render() {

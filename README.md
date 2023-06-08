@@ -223,8 +223,49 @@ export default connect(mapStateToProps, mapDispatchToProps)(Header);
 ## 使用 RTK 创建异步 action
 redux 中需要的数据，最好是在 redux 中去请求，而不是在页面或组件中请求。
 @reduxjs/toolkit 已经集成了 react-thunk
-1. 在 redux 中创建异步 action
+1. 在 redux 中创建 异步action
 ```javascript
+export const fetchLoginStateAction = createAsyncThunk("fetch/loginState",async () => {
+  // 在页面中 dispatch 之后，会有三种状态
+  // const res = axios.get("***")
+  // return res.data   这里返回的 res.data 会
+})
+```
+2. 页面中引入 异步action
+```javascript
+import { fetchLoginStateAction } from "@/store/login/login.js";
+class Header extends PureComponent {
+  componentDidMount(){
+    this.props.toLogin()
+  }
+}
+// 便利 redux 中的方法
+const mapDispatchToProps = (dispatch) => ({
+  toLogin(){
+    dispatch(fetchLoginStateAction())
+  }
+});
+```
+执行 dispatch(fetchLoginStateAction()) 的时候，才执行 createAsyncThunk 中的异步函数
+```javascript
+async () => {
+  // 在页面中 dispatch 之后，会有三种状态
+  const res = axios.get("***")
+  return res.data   // 这里返回的 res.data 会
+}
+```
+3. 异步 Reducers 中监听 异步 action 请求 return 出来的值的状态
+```javascript
+   extraReducers:{
+    [fetchLoginStateAction.pending](state,action){
 
+    },
+    [fetchLoginStateAction.fulfilled](state,action){
+      // const { state } = action.payload.data
+      // state.loginState = state
+    },
+    [fetchLoginStateAction.rejected](state,action){
 
+    }
+   }
 ```
