@@ -16,6 +16,8 @@
     "react-redux": "^8.0.7",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.10",
+    "svg-sprite-loader": "^6.0.11",
+    "svgo-loader": "^4.0.0",
     "tim-js-sdk": "^2.27.3",
     "tim-profanity-filter-plugin": "^0.9.0",
     "tim-upload-plugin": "^1.2.0",
