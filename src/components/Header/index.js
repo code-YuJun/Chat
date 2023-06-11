@@ -10,22 +10,25 @@ class Header extends PureComponent {
     this.props.toLogin();
   }
   render() {
-    const { value } = this.props;
+    const { loginState } = this.props;
     return (
       <HeaderWrapper>
         <div className="Logo">
-          <img src={logoPic} alt="logo" className="Logo_name"/>
+          <img src={logoPic} alt="logo" className="Logo_pic"/>
         </div>
         <div className="Info">
           <div className="Info_Name">聊天窗口</div>
-          <img src={ logining } className="Info_State"></img>
+          <div className="login_info">
+            <img src={ loginState ? logining : loginFail } className="Info_State"></img>
+            <span className="login_info">{loginState ? '在线' : '离线'}</span>
+          </div>
         </div>
       </HeaderWrapper>
     );
   }
 }
 const mapStateToProps = (state) => ({
-  value: state.counter.value,
+  loginState: state.login.loginState,
 });
 // 便利 redux 中的方法
 const mapDispatchToProps = (dispatch) => ({
