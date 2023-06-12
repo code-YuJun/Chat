@@ -2,7 +2,7 @@ import { PureComponent } from "react";
 import { tim, TIM } from "@/utils/tim.js";
 class Editor extends PureComponent {
   fun() {
-    // 发送消息
+    // 1. 创建消息实例
     let message = tim.createTextMessage({
       to: "1400787156",
       conversationType: TIM.TYPES.CONV_C2C, // 端到端
