@@ -14,7 +14,7 @@ export const fetchLoginStateAction = createAsyncThunk(
 export const loginSlice = createSlice({
   name: "login",
   initialState: {
-    loginState: false,
+    loginState: true,
   },
   // 同步 reducer
   reducers: {

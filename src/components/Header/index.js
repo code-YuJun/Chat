@@ -4,7 +4,6 @@ import { HeaderWrapper } from "./style";
 import { fetchLoginStateAction } from "@/store/login/login.js";
 import logining from "@/assets/svg/logining.svg"
 import loginFail from "@/assets/svg/loginFail.svg"
-import logoPic from "@/assets/img/chat.png";
 class Header extends PureComponent {
   componentDidMount() {
     this.props.toLogin();
@@ -13,9 +12,6 @@ class Header extends PureComponent {
     const { loginState } = this.props;
     return (
       <HeaderWrapper>
-        <div className="Logo">
-          <img src={logoPic} alt="logo" className="Logo_pic"/>
-        </div>
         <div className="Info">
           <div className="Info_Name">聊天窗口</div>
           <div className="login_info">
