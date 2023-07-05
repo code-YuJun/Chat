@@ -1,5 +1,5 @@
 import './App.css'
-import Editor from '@/components/Editor';
+import DEditor from '@/components/DEditor';
 import Header from '@/components/Header';
 import Message from '@/components/Message';
 
@@ -8,7 +8,7 @@ function App() {
     <div id="App">
         <Header />
         <Message />
-        <Editor />
+        <DEditor />
     </div>
   );
 }

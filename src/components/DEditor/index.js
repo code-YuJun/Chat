@@ -1,6 +1,27 @@
 import { PureComponent } from "react";
+import {
+  Editor,
+  EditorState,
+  // CompositeDecorator,
+  // Modifier,
+  // getDefaultKeyBinding,
+  // ContentState,
+} from "draft-js";
 import { tim, TIM } from "@/utils/tim.js";
-class Editor extends PureComponent {
+
+// const emojiDecorator = new CompositeDecorator([
+//   {
+//       strategy: handleEmojiStrategy,
+//       component: Emoji,
+//   },
+// ]);
+
+class DEditor extends PureComponent {
+  state = {
+    sendDisabled: false, // 是否禁用
+    inputBoxText: "输入聊天内容",
+    editorState: EditorState.createEmpty(), // 编辑器的状态
+  };
   fun() {
     // 1. 创建消息实例
     let message = tim.createTextMessage({
@@ -30,8 +51,37 @@ class Editor extends PureComponent {
         console.warn("sendMessage error:", imError);
       });
   }
+  handleEditorEnter = () => {
+    console.log("点击发送消息");
+  };
+  handleEditorChange = (editorState) => {
+    console.log("修改内容")
+    const editorContent = editorState.getCurrentContent();
+    const text = editorContent.getPlainText();
+    console.log(text)
+  }
   render() {
-    return <button onClick={this.fun}>点击发送消息</button>;
+    const { inputBoxText, sendDisabled, editorState} = this.state;
+    return (
+      <div>
+        <Editor
+          ref={this.editor}
+          editorState={editorState}
+          onChange={this.handleEditorChange}
+          // onFocus={this.handleQuestionShow}
+          // handleKeyCommand={this.handleKeyCommand}
+          // keyBindingFn={keyBindFn}
+          placeholder={inputBoxText}
+        />
+        <button
+          onClick={this.handleEditorEnter}
+          disabled={sendDisabled}
+          // className={styles.SendButton}
+        >
+          发送
+        </button>
+      </div>
+    );
   }
 }
-export default Editor;
+export default DEditor;
