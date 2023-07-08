@@ -1,6 +1,13 @@
 import { PureComponent } from "react";
+import { MessageWrapper } from './style';
+import { connect } from 'react-redux';
+// 导入 action 
+// import {  appendRealTimeMessage } from '@/store/chat/chat.js'
 import { TIM, tim } from "@/utils/tim.js";
 class Message extends PureComponent {
+  constructor() {
+    super()
+  }
   render() {
     let onMessageReceived = function (event) {
       // event.data - 存储 Message 对象的数组 - [Message]
@@ -19,7 +26,20 @@ class Message extends PureComponent {
     };
     tim.on(TIM.EVENT.MESSAGE_RECEIVED, onMessageReceived);
 
-    return <span>消息</span>;
+    return (
+      <MessageWrapper>
+      </MessageWrapper>
+    )
   }
 }
-export default Message;
+// 将 redux 中的变量遍历到 props 中
+const mapStateToProps = (state) => ({
+  // realTimeMessages: state.chat.realTimeMessages
+})
+// 使用 redux 中定义的 action 方法
+const mapDispatchToProps = (dispatch) => ({
+  // appendRealTimeMessage() {
+  //     dispatch(appendRealTimeMessage())
+  // }
+})
+export default connect(mapStateToProps,mapDispatchToProps)(Message);

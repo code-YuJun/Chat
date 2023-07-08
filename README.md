@@ -122,17 +122,6 @@ editorState是一个在富文本编辑器中用于表示编辑器状态的对象
 5. 处理编辑器中的实体和块级元素：通过调用editorState对象的方法，可以处理编辑器中的实体（如链接、图片等）和块级元素（如标题、段落等）。
 总的来说，editorState对象在富文本编辑器中起到了管理和控制编辑器状态的作用，通过对editorState对象的操作，可以实现对编辑器内容的修改和管理。
 
-
-
-
-
-
-
-
-
-
-
-
 ## 项目引入 RTK
 1. 安装依赖
 ```bash
@@ -179,7 +168,7 @@ const store = configureStore({
 
 export default store;
 ```
-4. 使用 react-redux 将 redux 和 组件关联
+4. 在 index.js 中使用 react-redux 将 redux 和 组件关联
 ```javascript
 import { Provider } from 'react-redux';
 import store from '@/store/index.js';

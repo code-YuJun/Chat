@@ -1,6 +1,6 @@
 import styled from "styled-components"
 export const HeaderWrapper = styled.div`
-    height: 60px;
+    height: 80px;
     display:flex;
     padding:10px;
     background: #F1F5FFFF;

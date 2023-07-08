@@ -1,23 +1,14 @@
 import { PureComponent , createRef} from "react";
 import { DEditorWrapper } from "./style";
+import { connect } from 'react-redux';
+// 导入 action 
+import { sendMessage } from '@/store/chat/chat.js'
 import Toolbar from "./Toolbar";
 import {
   Editor,
-  EditorState,
-  // CompositeDecorator,
-  // Modifier,
-  // getDefaultKeyBinding,
-  // ContentState,
+  EditorState
 } from "draft-js";
 import { tim, TIM } from "@/utils/tim.js";
-
-// const emojiDecorator = new CompositeDecorator([
-//   {
-//       strategy: handleEmojiStrategy,
-//       component: Emoji,
-//   },
-// ]);
-
 class DEditor extends PureComponent {
   state = {
     sendDisabled: true, // 发送是否禁用
@@ -40,26 +31,37 @@ class DEditor extends PureComponent {
       },
       needReadReceipt: true,
     });
+    this.props.sendMessage(message)
+    this.setState(
+      {
+        editorState: EditorState.createEmpty(),
+        sendDisabled: true,
+      },
+      () => {
+        this.editor.current.blur();
+        this.editor.current.focus();
+      }
+    );
     // 2. 发送消息
-    let promise2 = tim.sendMessage(message);
-    promise2
-      .then((imResponse) => {
-        // 发送成功
-        this.setState(
-          {
-            editorState: EditorState.createEmpty(),
-            sendDisabled: true,
-          },
-          () => {
-            this.editor.current.blur();
-            this.editor.current.focus();
-          }
-        );
-      })
-      .catch(function (imError) {
-        // 发送失败
-        console.warn("sendMessage error:", imError);
-      });
+    // let promise2 = tim.sendMessage(message);
+    // promise2
+    //   .then((imResponse) => {
+    //     // 发送成功
+    //     this.setState(
+    //       {
+    //         editorState: EditorState.createEmpty(),
+    //         sendDisabled: true,
+    //       },
+    //       () => {
+    //         this.editor.current.blur();
+    //         this.editor.current.focus();
+    //       }
+    //     );
+    //   })
+    //   .catch(function (imError) {
+    //     // 发送失败
+    //     console.warn("sendMessage error:", imError);
+    //   });
     // 清空输入框状态
   };
   handleEditorChange = (editorState) => {
@@ -79,9 +81,6 @@ class DEditor extends PureComponent {
           ref={this.editor}
           editorState={editorState}
           onChange={this.handleEditorChange}
-          // onFocus={this.handleQuestionShow}
-          // handleKeyCommand={this.handleKeyCommand}
-          // keyBindingFn={keyBindFn}
           placeholder={inputBoxText}
         />
         <button
@@ -95,4 +94,15 @@ class DEditor extends PureComponent {
     );
   }
 }
-export default DEditor;
+// 使用 redux 中定义的 action 方法
+const mapDispatchToProps = (dispatch) => {
+  return ({
+    async sendMessage(state) {
+      let sendMessageRes = await tim.sendMessage(state)
+      if (sendMessageRes.code === 0) {
+        dispatch(sendMessage(sendMessageRes.data.message))
+      }
+    }
+  })
+}
+export default connect(null,mapDispatchToProps)(DEditor);
