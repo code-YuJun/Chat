@@ -94,7 +94,7 @@ export { genTestUserSig, EXPIRETIME };
 ```
 ## 项目流程
 1. 先启动 IM 系统
-2. 启动当前项目 https://studyfe.gitee.io/tencent-im 该项目已经放在 gitpage 了
+2. 启动当前项目 https://studyfe.gitee.io/tencent-im 该项目已经放在 gitpage 了 user ID是（）
 
 ## 项目中的工具包
 1. classnames
@@ -107,6 +107,32 @@ redux-toolkit: https://cn.redux-toolkit.js.org/
 ## 输入框编辑器
 Draft.js 中文文档: https://github.com/mqyqingfeng/draft-js-doc-translation
 github官方文档: https://github.com/facebookarchive/draft-js
+### 富文本编辑器属性
+#### editorState
+editorState是一个在富文本编辑器中用于表示编辑器状态的对象。
+它包含了编辑器中的文本内容、光标位置、选中文本等信息。通过操作editorState对象，可以实现对编辑器内容的修改、插入、删除等操作。
+
+在富文本编辑器中，通常使用第三方库（如Draft.js）来管理editorState对象。这些库提供了一系列API和方法，用于创建、更新和获取editorState对象，以及对编辑器内容进行操作。
+
+通过使用editorState对象，可以实现以下功能：
+1. 获取编辑器中的文本内容：通过调用editorState对象的方法，可以获取编辑器中的文本内容，以便进行保存或其他处理。
+2. 修改编辑器中的文本内容：通过调用editorState对象的方法，可以对编辑器中的文本内容进行修改，例如插入、删除、替换文本等操作。
+3. 控制光标位置和选中文本：通过调用editorState对象的方法，可以控制光标的位置和选中文本的范围，以便进行精确的编辑操作。
+4. 格式化文本样式：通过调用editorState对象的方法，可以对编辑器中的文本样式进行设置，例如字体、字号、颜色、对齐方式等。
+5. 处理编辑器中的实体和块级元素：通过调用editorState对象的方法，可以处理编辑器中的实体（如链接、图片等）和块级元素（如标题、段落等）。
+总的来说，editorState对象在富文本编辑器中起到了管理和控制编辑器状态的作用，通过对editorState对象的操作，可以实现对编辑器内容的修改和管理。
+
+
+
+
+
+
+
+
+
+
+
+
 ## 项目引入 RTK
 1. 安装依赖
 ```bash

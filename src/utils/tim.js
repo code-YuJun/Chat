@@ -13,6 +13,9 @@ tim.registerPlugin({'tim-upload-plugin': TIMUploadPlugin});
 // IM 本地审核插件
 tim.registerPlugin({ 'tim-profanity-filter-plugin': TIMProfanityFilterPlugin });
 
+/**
+ * 通信sdk
+ */
 // SDK 进入 ready 状态时触发，接入侧监听此事件，然后可调用 SDK 发送消息等 API，使用 SDK 的各项功能
 let onSdkReady = function(event) {
   let message = tim.createTextMessage({ to: 'user1', conversationType: 'C2C', payload: { text: 'Hello world!' }});
@@ -30,7 +33,7 @@ tim.on(TIM.EVENT.SDK_NOT_READY, onSdkNotReady);
 
 
 // SDK 收到推送的单聊、群聊、群提示、群系统通知的新消息，接入侧可通过遍历 event.data 获取消息列表数据并渲染到页面
-let onMessageReceived = function(event) {
+let onMessageReceived = function (event) {
   // event.data - 存储 Message 对象的数组 - [Message]
 };
 tim.on(TIM.EVENT.MESSAGE_RECEIVED, onMessageReceived);
