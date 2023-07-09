@@ -25,14 +25,14 @@ class Message extends PureComponent {
     return (
       <MessageWrapper>
         {realTimeMessages.map((message, index) => {
-          const { from, type } = message;
+          const { flow, type } = message;
           let left;
           let right;
           let html = null;
-          if (from === "in") {
+          if (flow === "in") {
             right = true;
           }
-          if (from === "out") {
+          if (flow === "out") {
             left = true;
           }
           if (type === TIM.TYPES.MSG_TEXT) {

@@ -30,12 +30,12 @@ class RightText extends PureComponent {
 }
 class Text extends PureComponent {
   render() {
-    const { right, left } = this.props;
+    const { right, left , message} = this.props;
     if (right) {
-      return <RightText />;
+      return <RightText message={ message } />;
     }
     if (left) {
-      return <LeftText />;
+      return <LeftText message={ message } />;
     }
     return null;
   }
