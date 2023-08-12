@@ -2,6 +2,7 @@ import { PureComponent } from "react";
 import { connect } from "react-redux";
 import { HeaderWrapper } from "./style";
 import { fetchLoginStateAction } from "@/store/login/login.js";
+import Author from "@/assets/img/author.png"
 import logining from "@/assets/svg/logining.svg"
 import loginFail from "@/assets/svg/loginFail.svg"
 class Header extends PureComponent {
@@ -12,11 +13,21 @@ class Header extends PureComponent {
     const { loginState } = this.props;
     return (
       <HeaderWrapper>
-        <div className="Info">
-          <div className="Info_Name">聊天窗口</div>
-          <div className="login_info">
-            <img src={ loginState ? logining : loginFail } className="Info_State"></img>
-            <span className="login_info">{loginState ? '在线' : '离线'}</span>
+        <div className="Head">
+          <div className="Head__left">
+            <div className="Head__left--img">
+              <img src={Author}/>
+            </div>
+            <div className="Head__left--info">
+              <div className="text">
+                <span>IM窗口</span>
+                <img src={loginState ? logining : loginFail} className="state"></img>
+              </div>
+              <span className="description">客服系统前端</span>
+            </div>
+          </div>
+          <div className="Head__right">
+            <div className="line"></div>
           </div>
         </div>
       </HeaderWrapper>

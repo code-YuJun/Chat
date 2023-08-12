@@ -94,7 +94,7 @@ export { genTestUserSig, EXPIRETIME };
 ```
 ## 项目流程
 1. 先启动 IM 系统
-2. 启动当前项目 https://studyfe.gitee.io/tencent-im 该项目已经放在 gitpage 了 user ID是（）
+2. 启动当前项目 https://studyfe.gitee.io/tencent-im 该项目已经放在 gitpage 了 user ID是（1400787156）
 
 ## 项目中的工具包
 1. classnames

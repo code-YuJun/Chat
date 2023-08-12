@@ -1,41 +1,54 @@
 import styled from "styled-components"
 export const HeaderWrapper = styled.div`
-    height: 80px;
-    display:flex;
-    padding:10px;
-    background: #F1F5FFFF;
-    border-radius: 10px 10px 0 0;
-    .Logo{
-        height:80%;
-        margin: auto 0;
-    }
-    .Logo_pic{
-        height:100%;
-        margin: auto;
-    }
-    .Logo_name{
-        width:100%;
-        height:100%;
-        color:#1a1b1d;
-    }
-    .login_info{
-        color:#999;
-        display:flex;
-        align-items: center;
-        font-size: 14px;
-    }
-    .Info{
-        display:flex;
-        flex-direction:column;
+    .Head{
+        height: 60px;
+        padding: 5px;
+        color: white;
+        background: #3369FF;
+        border-radius: 12px 12px 0 0;
+        display: flex;
         justify-content: space-between;
-        margin-left:10px;
     }
-    .Info_Name{
-        font-size:18px;
-        font-weight: 500;
+    .Head__left{
+        display:flex;
     }
-    .Info_State{
-        width:20px;
-        height:20px;
+    .Head__left--img{
+        height:60px;
+        width:60px;
+        border-radius:50%;
+        img{
+            height:100%;
+        }
+    }
+    .Head__left--info{
+        display:flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        .description{
+            font-size:12px;
+        }
+    }
+    .text{
+        display:flex;
+        align-items:center;
+        img{
+            width:20px;
+            height:20px;
+        }
+        span{
+            font-size:14px;
+        }
+    }
+    .Head__right{
+        display:flex;
+        align-items:center;
+        padding-right:10px;
+        .line{
+            width:14px;
+            height:3px;
+            line-height:60px;
+            background:white;
+            cursor: pointer;
+        }
     }
 `
