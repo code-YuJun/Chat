@@ -7,6 +7,7 @@ import logining from "@/assets/svg/logining.svg"
 import loginFail from "@/assets/svg/loginFail.svg"
 class Header extends PureComponent {
   componentDidMount() {
+    // 创建长连接
     this.props.toLogin();
   }
   render() {

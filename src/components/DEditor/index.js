@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 // 导入 action 
 import { sendMessage } from '@/store/chat/chat.js'
 import Toolbar from "./Toolbar";
-import {
+import { 
   Editor,
+  // 编辑器状态
   EditorState
 } from "draft-js";
 import { tim, TIM } from "@/utils/tim.js";
@@ -13,7 +14,8 @@ class DEditor extends PureComponent {
   state = {
     sendDisabled: true, // 发送是否禁用
     inputBoxText: "输入聊天内容",
-    editorState: EditorState.createEmpty(), // 编辑器的状态
+    // 初始化编辑器
+    editorState: EditorState.createEmpty(),
   };
   editor = createRef();
 

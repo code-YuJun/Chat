@@ -18,6 +18,7 @@ class Message extends PureComponent {
     });
   };
   componentDidMount() {
+    // 接收消息
     tim.on(TIM.EVENT.MESSAGE_RECEIVED, this.messageReceive);
   }
   render() {
