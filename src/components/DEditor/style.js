@@ -1,10 +1,11 @@
 import styled from "styled-components"
 export const DEditorWrapper = styled.div`
     width: 100%;
-    height: 133px;
+    height: 130px;
     background: #fff;
     position: relative;
     box-sizing: border-box;
+    padding:20px;
     .public-DraftEditorPlaceholder-root {
         position: absolute;
         color: #888;
@@ -19,9 +20,9 @@ export const DEditorWrapper = styled.div`
     }
     .sendButton{
         position: absolute;
-        height: 30px;
-        right: 15px;
-        bottom: 20%;
+        height: 25px;
+        right: 10px;
+        bottom: 0px;
         transform: translateY(-50%);
         padding: 0 23px;
         border: 1px solid #979797;
