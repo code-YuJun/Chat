@@ -5,7 +5,6 @@ export const HeaderWrapper = styled.div`
         padding: 5px;
         color: white;
         background: #3369FF;
-        border-radius: 12px 12px 0 0;
         display: flex;
         justify-content: space-between;
     }
