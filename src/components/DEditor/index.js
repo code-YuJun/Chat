@@ -1,15 +1,23 @@
-import { PureComponent , createRef} from "react";
+import { PureComponent, createRef } from "react";
 import { DEditorWrapper } from "./style";
 import { connect } from 'react-redux';
 // 导入 action 
 import { sendMessage } from '@/store/chat/chat.js'
 import Toolbar from "./Toolbar";
-import { 
+import {
   Editor,
   // 编辑器状态
-  EditorState
+  EditorState,
+  getDefaultKeyBinding
 } from "draft-js";
 import { tim, TIM } from "@/utils/tim.js";
+const keyBindFn = (e) => {
+  // 回车
+  if (e.keyCode === 13 && !e.shiftKey) {
+    return 'send-message';
+  }
+  return getDefaultKeyBinding(e);
+};
 class DEditor extends PureComponent {
   state = {
     sendDisabled: true, // 发送是否禁用
@@ -44,27 +52,6 @@ class DEditor extends PureComponent {
         this.editor.current.focus();
       }
     );
-    // 2. 发送消息
-    // let promise2 = tim.sendMessage(message);
-    // promise2
-    //   .then((imResponse) => {
-    //     // 发送成功
-    //     this.setState(
-    //       {
-    //         editorState: EditorState.createEmpty(),
-    //         sendDisabled: true,
-    //       },
-    //       () => {
-    //         this.editor.current.blur();
-    //         this.editor.current.focus();
-    //       }
-    //     );
-    //   })
-    //   .catch(function (imError) {
-    //     // 发送失败
-    //     console.warn("sendMessage error:", imError);
-    //   });
-    // 清空输入框状态
   };
   handleEditorChange = (editorState) => {
     const editorContent = editorState.getCurrentContent();
@@ -74,6 +61,14 @@ class DEditor extends PureComponent {
       sendDisabled: text.trim().length === 0,
     });
   };
+  // 自定义键盘事件
+  handleKeyCommand = (command) => {
+    if (command === 'send-message') {
+      this.handleEditorEnter();
+      return 'handled';
+    }
+    return 'not-handled';
+  }
   render() {
     const { inputBoxText, sendDisabled, editorState } = this.state;
     return (
@@ -83,6 +78,8 @@ class DEditor extends PureComponent {
           ref={this.editor}
           editorState={editorState}
           onChange={this.handleEditorChange}
+          handleKeyCommand={this.handleKeyCommand}
+          keyBindingFn={keyBindFn}
           placeholder={inputBoxText}
         />
         <button
@@ -107,4 +104,4 @@ const mapDispatchToProps = (dispatch) => {
     }
   })
 }
-export default connect(null,mapDispatchToProps)(DEditor);
+export default connect(null, mapDispatchToProps)(DEditor);
