@@ -17,7 +17,7 @@ class Header extends PureComponent {
         <div className="Head">
           <div className="Head__left">
             <div className="Head__left--img">
-              <img src={Author}/>
+              <img src={Author} />
             </div>
             <div className="Head__left--info">
               <div className="text">
@@ -27,9 +27,11 @@ class Header extends PureComponent {
               <span className="description">客服系统前端</span>
             </div>
           </div>
-          <div className="Head__right">
-            <div className="line"></div>
-          </div>
+          {
+            window.top !== window && <div className="Head__right">
+              <div className="line"></div>
+            </div>
+          }
         </div>
       </HeaderWrapper>
     );

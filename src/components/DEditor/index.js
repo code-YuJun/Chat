@@ -11,6 +11,7 @@ import {
   getDefaultKeyBinding
 } from "draft-js";
 import { tim, TIM } from "@/utils/tim.js";
+// 编辑器输入的时候会触发
 const keyBindFn = (e) => {
   // 回车
   if (e.keyCode === 13 && !e.shiftKey) {
@@ -42,6 +43,7 @@ class DEditor extends PureComponent {
       needReadReceipt: true,
     });
     this.props.sendMessage(message)
+    // 消息发送之后，清空输入框
     this.setState(
       {
         editorState: EditorState.createEmpty(),
@@ -78,8 +80,8 @@ class DEditor extends PureComponent {
           ref={this.editor}
           editorState={editorState}
           onChange={this.handleEditorChange}
-          handleKeyCommand={this.handleKeyCommand}
           keyBindingFn={keyBindFn}
+          handleKeyCommand={this.handleKeyCommand}
           placeholder={inputBoxText}
         />
         <button

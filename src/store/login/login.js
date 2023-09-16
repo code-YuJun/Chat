@@ -16,7 +16,7 @@ export const loginSlice = createSlice({
   initialState: {
     loginState: true,
   },
-  // 同步 reducer
+  // 同步 reducer 中修改登录状态
   reducers: {
     changeLoginState: (state, action) => {
       state.loginState = action.payload;
@@ -26,7 +26,7 @@ export const loginSlice = createSlice({
   extraReducers: {
     [fetchLoginStateAction.pending](state, action) {
       //  请求loading效果
-      console.log("请求中");
+      console.log("==================建立链接==================");
     },
     [fetchLoginStateAction.fulfilled](state, action) {
       state.loginState = true;

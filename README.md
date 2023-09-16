@@ -46,23 +46,6 @@ import LibGenerateTestUserSig from './lib-generate-test-usersig-es.min.js';
 const EXPIRETIME = 604800;
 
 /**
- * Module: GenerateTestUserSig
- *
- * Description: Generates UserSig for testing. UserSig is a security signature designed by Tencent Cloud for its cloud services.
- * It is calculated based on `SDKAppID`, `UserID`, and `EXPIRETIME` using the HMAC-SHA256 encryption algorithm.
- *
- * Attention: For the following reasons, do not use the code below in your commercial application.
- *
- * The code may be able to calculate UserSig correctly, but it is only for quick testing of the SDK’s basic features, not for commercial applications.
- * `SECRETKEY` in client code can be easily decompiled and reversed, especially on web.
- * Once your key is disclosed, attackers will be able to steal your Tencent Cloud traffic.
- *
- * The correct method is to deploy the `UserSig` calculation code and encryption key on your project server so that your application can request from your server a `UserSig` that is calculated whenever one is needed.
- * Given that it is more difficult to hack a server than a client application, server-end calculation can better protect your key.
- *
- * Reference: https://cloud.tencent.com/document/product/647/17275#Server
- *
- *
  * Module:   GenerateTestUserSig
  *
  * Function: 用于生成测试用的 UserSig，UserSig 是腾讯云为其云服务设计的一种安全保护签名。
@@ -92,7 +75,7 @@ function genTestUserSig(options) {
 
 export { genTestUserSig, EXPIRETIME };
 ```
-## 项目流程
+## 项目运行流程
 1. 先启动 IM 系统
 2. 启动当前项目 https://studyfe.gitee.io/tencent-im 该项目已经放在 gitpage 了 user ID是（1400787156）
 
@@ -123,6 +106,8 @@ editorState是一个在富文本编辑器中用于表示编辑器状态的对象
 总的来说，editorState对象在富文本编辑器中起到了管理和控制编辑器状态的作用，通过对editorState对象的操作，可以实现对编辑器内容的修改和管理。
 
 ## 项目引入 RTK
+redux 原理
+页面 dispatch(action对象) 到 reducer，reducer处理，改变 state。
 1. 安装依赖
 ```bash
 npm i @reduxjs/toolkit react-redux

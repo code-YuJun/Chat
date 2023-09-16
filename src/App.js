@@ -1,7 +1,7 @@
 import "./App.css";
-import DEditor from "@/components/DEditor";
 import Header from "@/components/Header";
 import Message from "@/components/Message";
+import DEditor from "@/components/DEditor";
 
 function App() {
   return (
