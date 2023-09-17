@@ -11,6 +11,10 @@ const store = configureStore({
     login: loginSlice,
     chat: chatSlice
   },
+  //关闭redux序列化检测
+  middleware:getDefaultMiddleware => getDefaultMiddleware({
+    serializableCheck:false
+  })
 });
 
 export default store;

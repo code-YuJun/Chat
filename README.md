@@ -269,3 +269,8 @@ async () => {
     }
    }
 ```
+## 聊天数据存储
+数据结构参考文档：
+https://blog.csdn.net/m0_37527015/article/details/84338831
+采用 Immutable.js 中的 OrderMap() 有序 map 
+

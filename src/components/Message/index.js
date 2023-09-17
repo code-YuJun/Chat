@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { listenRealTimeMessage } from "@/store/chat/chat.js";
 import { TIM, tim } from "@/utils/tim.js";
 // 导入各种类型的消息
+import Session from "./Session"
 import Text from "./Text";
 class Message extends PureComponent {
   messageReceive = (event) => {
@@ -25,7 +26,7 @@ class Message extends PureComponent {
     let { realTimeMessages } = this.props;
     return (
       <MessageWrapper>
-        {realTimeMessages.map((message, index) => {
+        {realTimeMessages.toList().map((message, index) => {
           const { flow, type } = message;
           let left;
           let right;
@@ -39,7 +40,7 @@ class Message extends PureComponent {
           if (type === TIM.TYPES.MSG_TEXT) {
             html = <Text message={message} right={right} left={left} />;
           }
-          return <div key={index}>{html}</div>
+          return <Session key={index} right={right} left={left}>{html}</Session>
         })}
       </MessageWrapper>
     );

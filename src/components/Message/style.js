@@ -4,4 +4,6 @@ export const MessageWrapper = styled.div`
   width: 100%;
   background-color: #f1f5f8;
   overflow-y: auto;
+  box-sizing: border-box;
+  padding: 10px 5px;
 `;
